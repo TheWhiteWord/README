@@ -1,6 +1,14 @@
 # READMEs Programming System Documentation
 
-!!! IMPORTANT NOTICE: this project is 'work in progress' and not all features are imlpemented, this doc serves as a roadmap too.
+!!! IMPORTANT NOTICE: this project is 'work in progress' and not all features are implemented, this doc serves as a roadmap too.
+
+## Quick Links
+- [🧪 Testing Guide](Rdm_testing.md)
+- [📦 Git Integration](Rdm_git.md)
+- [🔌 External Libraries](Rdm_external_libraries.md)
+- [📘 Implementation Details](Rdm_implementation.md)
+- [⚙️ System Configuration](README.md)
+- [📝 Examples](examples/)
 
 ## Table of Contents
 - [Overview](#overview)
@@ -25,6 +33,14 @@ READMEs is a revolutionary programming system that uses README.md files as both 
 - **Self-Documenting**: Examples are executable and always up-to-date
 
 ## Core Concepts
+
+### Documentation Structure
+The system documentation is organized into several interconnected Markdown files:
+- **Main Documentation** (this file): Overview and central reference
+- **[Testing Guide](Rdm_testing.md)**: Component testing and validation
+- **[Git Integration](Rdm_git.md)**: Version control and collaboration
+- **[External Libraries](Rdm_external_libraries.md)**: Third-party code integration
+- **[Implementation Details](Rdm_implementation.md)**: Technical specifications
 
 ### The README as Code
 
@@ -62,16 +78,18 @@ Your README.md file becomes a functional program through:
    - Processes Markdown structures
    - Extracts function definitions
    - Manages program context
+   - [Details in Implementation Guide](Rdm_implementation.md#parser-system)
 
 2. **Execution Engine**
    - Interfaces with LLMs
-   - Manages state through Git
+   - [Git-based state management](Rdm_git.md#version-control)
    - Handles function calls
+   - [Testing procedures](Rdm_testing.md#testing-methodology)
 
 3. **Context Management**
    - Variables like `{{previous_output}}`
-   - Git-based state persistence
-   - Template resolution
+   - [Git-based state persistence](Rdm_git.md#collaboration)
+   - [Template resolution](Rdm_implementation.md#templates)
 
 ## Getting Started
 
@@ -142,19 +160,25 @@ functions:
 ## Advanced Features
 
 ### Git Integration
-
+See [Git Integration Guide](Rdm_git.md) for detailed information about:
 - State management through commits
 - Branch-based program variations
 - Version control for templates
+- Collaboration workflows
 
-### Template System
+### External Libraries
+See [External Libraries Guide](Rdm_external_libraries.md) for:
+- Library import process
+- Supported languages
+- Integration patterns
+- Usage examples
 
-```yaml
-templates:
-  - quick_start
-  - analysis
-  - documentation
-```
+### Testing Framework
+See [Testing Guide](Rdm_testing.md) for:
+- Component testing
+- Integration testing
+- Test case examples
+- Best practices
 
 ### Web Components
 
@@ -196,12 +220,20 @@ templates:
 - `length`: Output length control
 - `style`: Formatting options
 
+## Related Documentation
+
+### Core System Documentation
+- [Git Integration](Rdm_git.md) - Version control and collaboration guidelines
+- [External Libraries](Rdm_external_libraries.md) - Importing and using external code libraries
+
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Update the README.md with new functions/examples
-4. Submit a pull request
+4. Follow our [testing guidelines](Rdm_testing.md#best-practices)
+5. Use [Git best practices](Rdm_git.md#best-practices)
+6. Submit a pull request
 
 ## Future Development
 

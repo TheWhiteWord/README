@@ -103,7 +103,6 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
   - libraries:
     - my_first_library.md
   - readme_content: "{{readme_content}}"
-
 ```
 
 ## Execution Context

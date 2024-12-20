@@ -1,5 +1,12 @@
 # READMEs Programming System
 
+An innovative programming system using README.md files as both documentation and executable code, optimized for LLM interaction.
+
+## Quick Links
+- [Documentation](doc/Rdm_documentation.md)
+- [Git Integration](doc/Rdm_git.md)
+- [External Libraries](doc/Rdm_external_libraries.md)
+
 ## System Configuration
 
 ```yaml
@@ -10,6 +17,8 @@ variables:
   previous_output: ""
   system_state: ""
   topic: ""
+  llm_context: enabled
+  git_integration: enabled
 parser:
   heading_section: ^##\s+(.+)$
   heading_function: ^#\s+(.+)$
@@ -17,6 +26,10 @@ parser:
   key_value: ^(\s+)-\s+(\w+):\s*(.+)$
   nested_list: ^(\s+)-\s+(\w+):$
   indentation: 2
+llm_settings:
+  context_depth: 3
+  branch_awareness: true
+  cross_reference: enabled
 ```
 
 ## Parser Implementation
@@ -33,13 +46,15 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 ## CORE
 
 # system_init
-  - description: Bootstrap system from README
+  - description: Bootstrap system from README with LLM context
   - parameters:
     - content: string
+    - llm_context: object
   - returns:
     - system_state: ready
     - functions: loaded
     - templates: parsed
+    - llm_context: initialized
 
 # system_execute
   - description: Run template with context
@@ -56,6 +71,24 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
   - returns:
     - composed_readme: string
     - execution_state: ready
+
+## LLM Integration
+
+# llm_context_switch
+  - description: Switch LLM context based on Git branch or documentation section
+  - parameters:
+    - context_type: "git"|"doc"
+    - context_id: string
+  - returns:
+    - new_context: object
+
+# llm_reference_resolver
+  - description: Resolve cross-references in documentation for LLM
+  - parameters:
+    - reference: string
+    - context: object
+  - returns:
+    - resolved_content: string
 
 ## CUSTOM
 ```
@@ -87,7 +120,12 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 {
   "previous_output": "",
   "variables": {},
-  "state": "ready"
+  "state": "ready",
+  "llm_context": {
+    "current_branch": "main",
+    "doc_section": "root",
+    "reference_depth": 0
+  }
 }
 ```
 
@@ -115,4 +153,12 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
   - readme_content: "{{readme_content}}"
 ```
 
-## Help Documentation
+## LLM Interaction Guide
+
+For optimal LLM interaction, use:
+- Internal links: [Function Library](#function-library)
+- Git branches for context switching
+- Cross-references between documentation files
+- Structured metadata in YAML format
+
+See [Documentation](doc/Rdm_documentation.md) for detailed usage.
