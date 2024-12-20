@@ -31,6 +31,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 
 ```md
 ## CORE
+
 # system_init
   - description: Bootstrap system from README
   - parameters:
@@ -48,14 +49,38 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
     - context: object
 
 # system_compose_program
-  - description: Generates a composed program with the defined functions
+  - description: Generates a composed program by combining README.md with custom libraries
   - parameters:
+    - readme_file: string
     - libraries: [string]
-    - readme_content: string
   - returns:
-    - composed_program: string
+    - composed_readme: string
+    - execution_state: ready
 
 ## CUSTOM
+```
+
+## Program Templates
+
+```md
+#### CORE
+### Compose Program
+# Execute
+  - function: system_compose_program
+  - parameters:
+    - readme_file: "{{readme_content}}"  
+    - libraries: 
+      - "{{library_content}}"             
+  - returns:
+    - composed_readme: string              
+
+### Execute Composed Program
+# Execute
+  - function: system_execute
+  - input: "Your input"
+  - context: "{{previous_output}}"
+
+#### CUSTOM  
 ```
 
 ## Execution Context

@@ -48,6 +48,15 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
     - input: string
     - context: object
 
+# system_compose_program
+  - description: Generates a composed program by combining README.md with custom libraries
+  - parameters:
+    - readme_file: string
+    - libraries: [string]
+  - returns:
+    - composed_readme: string
+    - execution_state: ready
+
 ## CUSTOM
 
 # format_text
@@ -80,19 +89,31 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 ## Program Templates
 
 ```md
-### Bootstrap
+#### CORE
+
+### Compose Program
 # Execute
-  - function: system_init
-  - input: "{{readme_content}}"
-  - outputs:
-    - system_state
-    - functions
-    - templates
+  - function: system_compose_program
+  - parameters:
+    - readme_file: "{{readme_content}}"  
+    - libraries: 
+      - "{{library_content}}"             
+  - returns:
+    - composed_readme: string              
+
+### Execute Composed Program
+# Execute
+  - function: system_execute
+  - input: "Your input"
+  - context: "{{previous_output}}"
+
+
+#### CUSTOM  
 
 ### Text Analysis
 # Execute
   - function: system_execute
-  - template: text_analysis
+  - template: text_analysis_pipeline
   - input: "{{input_text}}"
   - context: "{{system_state}}"
 ```
@@ -101,9 +122,9 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 
 ```md
 # Generate
-    - type: text
-    - length: 100
-    - topic: "{{topic}}"
+   - type: text
+   - length: 100
+   - topic: "{{topic}}"
 
 ## Transform
    - input: "{{previous_output}}"
