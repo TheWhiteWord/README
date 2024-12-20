@@ -85,27 +85,25 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
       - is
 ```
 
-## Program Templates
+# Program Templates
 
 ```md
-#### CORE
-### Compose Program
+### Bootstrap
+# Execute
+  - function: system_init
+  - input: "{{readme_content}}"
+  - outputs:
+    - system_state
+    - functions
+    - templates
+
+### Program Composing
 # Execute
   - function: system_compose_program
-  - parameters:
-    - readme_file: "{{readme_content}}"  
-    - libraries: 
-      - "{{library_content}}"             
-  - returns:
-    - composed_readme: string              
+  - libraries:
+    - my_first_library.md
+  - readme_content: "{{readme_content}}"
 
-### Execute Composed Program
-# Execute
-  - function: system_execute
-  - input: "Your input"
-  - context: "{{previous_output}}"
-
-#### CUSTOM
 ```
 
 ## Execution Context
@@ -132,14 +130,13 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
     - templates
 ```
 
-## Composing the Program
+## Program Composition
 
 ```md
 # Execute
   - function: system_compose_program
   - libraries:
     - my_first_library.md
-    - Text_augementation_library.md
   - readme_content: "{{readme_content}}"
 ```
 
