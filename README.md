@@ -27,6 +27,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 
 ## Function Library
 
+```md
 # system_init
   - description: Bootstrap system from README
   - parameters:
@@ -50,7 +51,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
     - readme_content: string
   - returns:
     - composed_program: string
-
+```
 ## Execution Context
 
 ```json
@@ -63,23 +64,27 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 
 ## Program Execution
 
-  ### Bootstrap
+### Bootstrap
 
-  # Execute
-    - function: system_init
-    - input: "{{readme_content}}"
-    - outputs:
-      - system_state
-      - functions
-      - templates
+```md
+# Execute
+  - function: system_init
+  - input: "{{readme_content}}"
+  - outputs:
+    - system_state
+    - functions
+    - templates
+```
 
-  ## Composing the Program
+## Composing the Program
 
-  # Execute
-    - function: system_compose_program
-    - libraries:
-      - my_first_library.md
-      - Text_augementation_library.md
-    - readme_content: "{{readme_content}}"
+```md
+# Execute
+  - function: system_compose_program
+  - libraries:
+    - my_first_library.md
+    - Text_augementation_library.md
+  - readme_content: "{{readme_content}}"
+```
 
   ## Help Documentation

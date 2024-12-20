@@ -27,7 +27,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 ```
 
 ## Function Library
-
+```md
 # system_init
   - description: Bootstrap system from README
   - parameters:
@@ -69,9 +69,11 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
       - the
       - and
       - is
+```
 
 ## Program Templates
 
+```md
 ### Bootstrap
 # Execute
   - function: system_init
@@ -87,9 +89,10 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
   - template: text_analysis
   - input: "{{input_text}}"
   - context: "{{system_state}}"
+```
 
 ### Text Analysis Pipeline
-
+```md
 # Generate
     - type: text
     - length: 100
@@ -104,6 +107,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
    - input: "{{previous_output}}"
    - function: extract_keywords
    - max_keywords: 3
+```
 
 ## Execution Context
 

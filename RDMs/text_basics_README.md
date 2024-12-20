@@ -27,7 +27,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 ```
 
 ## Function Library
-
+```md
 # system_init
   - description: Bootstrap system from README
   - parameters:
@@ -69,6 +69,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
       - the
       - and
       - is
+```
 
 ## Execution Context
 
