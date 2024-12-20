@@ -6,7 +6,7 @@ This library provides basic tools for text manipulation and analysis.
 
 ---
 
-## Function Definitions
+## Custom Function Definitions
 
 ### `format_text`
 
