@@ -1,5 +1,4 @@
-# READMEs Programming System - Initial Setup
-
+# READMEs Programming System
 ## System Configuration
 ```yaml
 version: 1.0
