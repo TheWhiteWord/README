@@ -54,5 +54,5 @@
   - function: format_text
   - input: "{{previous_output}}"
   - style: italic
-  
+
 ```
