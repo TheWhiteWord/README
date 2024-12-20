@@ -81,4 +81,29 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 }
 ```
 
+## Program Execution
+
+### Bootstrap
+
+```md
+# Execute
+  - function: system_init
+  - input: "{{readme_content}}"
+  - outputs:
+    - system_state
+    - functions
+    - templates
+```
+
+## Composing the Program
+
+```md
+# Execute
+  - function: system_compose_program
+  - libraries:
+    - my_first_library.md
+    - Text_augementation_library.md
+  - readme_content: "{{readme_content}}"
+```
+
 ## Help Documentation

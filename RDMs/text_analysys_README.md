@@ -1,6 +1,7 @@
 # READMEs Programming System
 
 ## System Configuration
+
 ```yaml
 version: 1.0
 context: enabled
@@ -27,6 +28,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 ```
 
 ## Function Library
+
 ```md
 # system_init
   - description: Bootstrap system from README
@@ -92,6 +94,7 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
 ```
 
 ### Text Analysis Pipeline
+
 ```md
 # Generate
     - type: text
@@ -117,6 +120,31 @@ const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
   "variables": {},
   "state": "ready"
 }
+```
+
+## Program Execution
+
+### Bootstrap
+
+```md
+# Execute
+  - function: system_init
+  - input: "{{readme_content}}"
+  - outputs:
+    - system_state
+    - functions
+    - templates
+```
+
+## Composing the Program
+
+```md
+# Execute
+  - function: system_compose_program
+  - libraries:
+    - my_first_library.md
+    - Text_augementation_library.md
+  - readme_content: "{{readme_content}}"
 ```
 
 ## Help Documentation
