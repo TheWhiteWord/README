@@ -1,5 +1,7 @@
 # READMEs Programming System Documentation
 
+!!! IMPORTANT NOTICE: this project is 'work in progress' and not all features are imlpemented, this doc serves as a roadmap too.
+
 ## Table of Contents
 - [Overview](#overview)
 - [Core Concepts](#core-concepts)
