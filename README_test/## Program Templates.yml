@@ -1,0 +1,34 @@
+## Program Templates
+
+### Bootstrap
+# Execute
+  - function: system_init
+  - input: "{{readme_content}}"
+  - outputs:
+    - system_state
+    - functions
+    - templates
+
+### Text Analysis
+# Execute
+  - function: system_execute
+  - template: text_analysis
+  - input: "{{input_text}}"
+  - context: "{{system_state}}"
+
+### Text Analysis Pipeline
+
+# Generate
+    - type: text
+    - length: 100
+    - topic: "{{topic}}"
+
+## Transform
+   - input: "{{previous_output}}"
+   - function: summarize_text
+   - length: 50
+
+### Analyze
+   - input: "{{previous_output}}"
+   - function: extract_keywords
+   - max_keywords: 3
