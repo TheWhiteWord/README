@@ -1,91 +1,125 @@
-# External Libraries Integration for READMEs Programming System
+# External Libraries Integration
 
-This document outlines the process of importing and using external libraries within the READMEs Programming System, allowing seamless integration of existing code into the MDScript format.
+This document outlines the integration of external libraries within the READMEs Programming System.
 
-📚 [Back to Main Documentation](Rdm_documentation.md)
+## Quick Links
+📘 Related Docs:
+- [Main Documentation](Rdm_documentation.md)
+- [Git Integration](Rdm_git.md#dependency-tracking)
+- [Testing Guide](Rdm_testing.md#integration-testing)
 
 ## Table of Contents
-- [Overview](#overview)
-- [System Configuration](#system-configuration)
-- [Import Process](#import-process)
-- [Function Library](#function-library)
-- [Usage Examples](#usage-examples)
+- [Library System](#library-system)
+- [Integration Methods](#integration-methods)
+- [State Management](#state-management)
+- [Testing](#testing)
+- [Examples](#examples)
 
-## Overview
+## Library System
 
-The READMEs Programming System supports importing external libraries from various programming languages, converting them into MDScript format for seamless integration with your documentation-as-code workflow.
-
-## System Configuration
-
-The system includes specialized parsers for different programming languages:
-
+### Configuration
 ```yaml
-version: 1.0
-context: enabled
-parser:
-  #other parsers..
-  python_function: ^def\s+(\w+)\s*\((.*?)\)
-  js_function: ^(async\s+)?function\s+(\w+)\s*\((.*?)\)
-  ts_function: ^(export\s+)?(async\s+)?function\s+(\w+)\s*\((.*?)\)
+library_config:
+  auto_import: true
+  state_tracking: enabled
+  supported_languages:
+    - python: "*.py"
+    - javascript: "*.js"
+    - typescript: "*.ts"
+  git_integration: true
 ```
 
-## Import Process
-
-### Library Parser Patterns
-The system uses language-specific patterns to parse external libraries and convert them into MDScript format.
-
-### Supported Languages
-- Python
-- JavaScript
-- TypeScript
-
-### Import Function
+### Import System
 ```markdown
-# system_import_library
-  - description: Imports external library and converts to MDScript
-  - parameters:
-    - file_path: string
-    - language: string  # "python"|"javascript"|"typescript"
-  - returns:
-    - md_library: string
+# Library Import
+- track:
+  - source_files
+  - converted_mdscript
+  - dependencies
+- hooks:
+  - pre_import: validate_syntax
+  - post_import: update_docs
 ```
 
-## Usage Examples
+## Integration Methods
 
-### Python to MDScript Conversion
-Original Python code:
+### Direct Import
+```markdown
+# Import Library
+- source: "./lib/utils.py"
+- format: python
+- export:
+  - functions: ["process_text", "analyze_data"]
+  - templates: ["analysis_template"]
+```
+
+### Git-Based Integration
+See [Git Integration](Rdm_git.md#external-libraries) for:
+- Version control of libraries
+- Dependency tracking
+- State management
+
+### Testing Integration
+See [Testing Guide](Rdm_testing.md#integration-testing) for:
+- Library validation
+- Integration testing
+- State verification
+
+## State Management
+
+### Version Control
+```markdown
+# Library State
+- track_versions: true
+- update_strategy: "auto"
+- conflict_resolution: "manual"
+```
+
+## Examples
+
+### Python Library
 ```python
-def format_text(text: str, style: str = "plain") -> str:
-    return text.upper()
+# Source: utils.py
+def analyze_text(text: str) -> dict:
+    return {"words": len(text.split())}
 ```
 
-Converted MDScript:
+Converts to:
 ```markdown
-# format_text
-  - description: Formats text
-  - parameters:
-    - text: string
-    - style: string = "plain"
-  - returns: string
+# Function: analyze_text
+- input: text: string
+- output: dictionary
+- processing:
+  - split text
+  - count words
+- returns: word_count
 ```
 
-### Import Template
-To import an external library, use the following template:
+### Usage Template
 ```markdown
 # Execute
-  - function: system_import_library
-  - parameters:
-    - file_path: "./libraries/utils.py"
-    - language: "python"
-  - returns:
-    - md_library: string
+- import: "./lib/utils.py"
+- function: analyze_text
+- input: "{{previous_output}}"
 ```
 
 ## Best Practices
 
-1. **File Organization**: Keep external libraries in a dedicated `libraries` directory
-2. **Documentation**: Ensure imported functions have proper descriptions and parameter documentation
-3. **Version Control**: Track both original source files and converted MDScript files
-4. **Testing**: Validate converted functions maintain their original behavior
+1. **Organization**
+- Use [Git-based versioning](Rdm_git.md#version-control)
+- Follow [testing protocols](Rdm_testing.md#best-practices)
+- Maintain clear documentation
 
-By following these guidelines, you can effectively integrate external libraries into your READMEs Programming System while maintaining clean and consistent documentation.
+2. **Integration**
+- Track dependencies
+- Version libraries
+- Validate conversions
+
+3. **Testing**
+- Unit test imports
+- Integration test
+- State validation
+
+---
+📝 See [Implementation Guide](Rdm_implementation.md) for technical details
+🔄 Follow [Git Guide](Rdm_git.md) for version control

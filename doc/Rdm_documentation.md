@@ -3,47 +3,65 @@
 !!! IMPORTANT NOTICE: this project is 'work in progress' and not all features are implemented, this doc serves as a roadmap too.
 
 ## Quick Links
-- [🧪 Testing Guide](Rdm_testing.md)
-- [📦 Git Integration](Rdm_git.md)
-- [🔌 External Libraries](Rdm_external_libraries.md)
-- [📘 Implementation Details](Rdm_implementation.md)
-- [⚙️ System Configuration](README.md)
-- [📝 Examples](examples/)
+📘 System Docs:
+- [Documentation Standards](Rdm_standards.md)
+- [Implementation Details](Rdm_implementation.md)
+- [Testing Guide](Rdm_testing.md)
+- [Git Integration](Rdm_git.md)
+- [External Libraries](Rdm_external_libraries.md)
 
 ## Table of Contents
-- [Overview](#overview)
-- [Core Concepts](#core-concepts)
-- [System Architecture](#system-architecture)
+- [System Overview](#system-overview)
+- [LLM Integration](#llm-integration)
+- [Core Components](#core-components)
 - [Getting Started](#getting-started)
-- [Function Library](#function-library)
-- [Examples](#examples)
-- [Advanced Features](#advanced-features)
-- [Best Practices](#best-practices)
+- [Function Reference](#function-reference)
+- [Advanced Usage](#advanced-usage)
 
-## Overview
+## System Overview
 
-READMEs is a revolutionary programming system that uses README.md files as both documentation and executable code. It leverages the power of Large Language Models (LLMs) to create a structured programming environment using familiar Markdown syntax.
+READMEs is a programming system using README.md files as executable documentation with LLM integration.
 
-### Key Benefits
+### Key Features
+- README.md as executable code
+- LLM-powered processing
+- Git-compatible
+- Built-in testing framework
+- External library support
 
-- **Single Source of Truth**: README.md serves as both documentation and code
-- **Natural Language Integration**: Seamless interaction with LLMs
-- **Version Control Friendly**: Built on Git-compatible Markdown
-- **Low Learning Curve**: Uses widely understood Markdown syntax
-- **Self-Documenting**: Examples are executable and always up-to-date
+## LLM Integration
 
-## Core Concepts
+### Processing Protocol
+```yaml
+llm_features:
+  navigation:
+    warmhole_links: enabled  # Direct knowledge jumps
+    context_depth: 3
+    state_tracking: enabled
+  
+  optimization:
+    priority_sections: ["config", "examples", "state"]
+    context_switches: minimal
+```
 
-### Documentation Structure
-The system documentation is organized into several interconnected Markdown files:
-- **Main Documentation** (this file): Overview and central reference
-- **[Testing Guide](Rdm_testing.md)**: Component testing and validation
-- **[Git Integration](Rdm_git.md)**: Version control and collaboration
-- **[External Libraries](Rdm_external_libraries.md)**: Third-party code integration
-- **[Implementation Details](Rdm_implementation.md)**: Technical specifications
+### Context Management
+```markdown
+# Context Rules
+- preserve_context: true
+- state_tracking: enabled
+- warmhole_navigation: enabled
+```
 
-### The README as Code
+### Document Structure
+Follow [Documentation Standards](Rdm_standards.md#document-structure) for:
+- File organization
+- Section hierarchy
+- Code block formatting
+- Cross-referencing
 
+## Core Components
+
+### System Configuration
 ```yaml
 version: 1.0
 context: enabled
@@ -53,14 +71,7 @@ variables:
   system_state: ""
 ```
 
-Your README.md file becomes a functional program through:
-1. Function definitions using structured Markdown
-2. Program templates for common operations
-3. Metadata sections for system configuration
-4. Live examples that serve as both documentation and code
-
-### Function Structure
-
+### Basic Function Structure
 ```mdscript
 # Define Function: example_function
 - description: What the function does
@@ -70,32 +81,17 @@ Your README.md file becomes a functional program through:
 - returns: string
 ```
 
-## System Architecture
-
-### Core Components
-
-1. **Parser System**
-   - Processes Markdown structures
-   - Extracts function definitions
-   - Manages program context
-   - [Details in Implementation Guide](Rdm_implementation.md#parser-system)
-
-2. **Execution Engine**
-   - Interfaces with LLMs
-   - [Git-based state management](Rdm_git.md#version-control)
-   - Handles function calls
-   - [Testing procedures](Rdm_testing.md#testing-methodology)
-
-3. **Context Management**
-   - Variables like `{{previous_output}}`
-   - [Git-based state persistence](Rdm_git.md#collaboration)
-   - [Template resolution](Rdm_implementation.md#templates)
+### State Management
+```markdown
+# State Features
+- context_preservation: enabled
+- state_tracking: active
+- git_integration: enabled
+```
 
 ## Getting Started
 
-### Basic Setup
-
-1. Create a new README.md:
+### Quick Start
 ```markdown
 # My First Program
 
@@ -107,48 +103,35 @@ functions:
   - summarize_text
 ```
 
-## Function Library
-```
+### Basic Functions
+1. `generate_text`: Create new content
+2. `summarize_text`: Transform existing content
+3. `format_text`: Style output
 
-### Built-in Functions
+## Function Reference
 
-1. `generate_text`
-   ```mdscript
-   # Generate
-   - type: text
-   - length: 100
-   - topic: "AI and the future"
-   ```
+### System Variables
+- `{{readme_content}}`: Current document
+- `{{previous_output}}`: Last result
+- `{{system_state}}`: System context
 
-2. `summarize_text`
-   ```mdscript
-   # Transform
-   - input: "{{previous_output}}"
-   - function: summarize_text
-   - length: 50
-   ```
-
-## Examples
-
-### Simple Text Generation
-
+### Core Functions
 ```mdscript
 # Generate
 - type: text
 - length: 100
-- topic: "AI programming"
+- topic: "example"
 
-## Transform
+# Transform
 - input: "{{previous_output}}"
 - function: summarize_text
-- length: 50
 ```
 
-### Advanced Template Usage
+## Advanced Usage
 
+### Templates
 ```mdscript
 # Program Templates
-
 ## Analysis Template
 - input: "{{input_text}}"
 - steps:
@@ -157,94 +140,24 @@ functions:
   - summarize_text
 ```
 
-## Advanced Features
+### Integration Points
+- Git workflow: See [Git Guide](Rdm_git.md)
+- External libraries: See [Libraries Guide](Rdm_external_libraries.md)
+- Testing framework: See [Testing Guide](Rdm_testing.md)
 
-### Git Integration
-See [Git Integration Guide](Rdm_git.md) for detailed information about:
-- State management through commits
-- Branch-based program variations
-- Version control for templates
-- Collaboration workflows
+### Context Navigation
+1. Use warmhole links for direct jumps
+2. Maintain state across documents
+3. Follow [standards guidelines](Rdm_standards.md#llm-navigation-guide)
 
-### External Libraries
-See [External Libraries Guide](Rdm_external_libraries.md) for:
-- Library import process
-- Supported languages
-- Integration patterns
-- Usage examples
-
-### Testing Framework
-See [Testing Guide](Rdm_testing.md) for:
-- Component testing
-- Integration testing
-- Test case examples
-- Best practices
-
-### Web Components
-
-- README as API endpoint
-- WebSocket updates
-- Browser-based execution
-
-## Best Practices
-
-1. **Structure**
-   - Use clear hierarchical headings
-   - Group related functions
-   - Include examples with outputs
-
-2. **Context Management**
-   - Use explicit variable names
-   - Document state changes
-   - Maintain clear data flow
-
-3. **Version Control**
-   - Commit meaningful states
-   - Use branches for variations
-   - Tag stable versions
-
-4. **Documentation**
-   - Include live examples
-   - Document parameters
-   - Show expected outputs
-
-## Reference
-
-### System Variables
-- `{{readme_content}}`: Current README content
-- `{{previous_output}}`: Last operation result
-- `{{system_state}}`: Current system state
-
-### Function Parameters
-- `input`: Input text for processing
-- `length`: Output length control
-- `style`: Formatting options
-
-## Related Documentation
-
-### Core System Documentation
-- [Git Integration](Rdm_git.md) - Version control and collaboration guidelines
-- [External Libraries](Rdm_external_libraries.md) - Importing and using external code libraries
+### Best Practices
+1. Follow [documentation standards](Rdm_standards.md#best-practices)
+2. Use proper [state management](Rdm_standards.md#state-tracking)
+3. Implement [LLM protocols](Rdm_standards.md#llm-processing-protocol)
+4. Maintain [context integrity](Rdm_standards.md#context-assessment)
 
 ## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Update the README.md with new functions/examples
-4. Follow our [testing guidelines](Rdm_testing.md#best-practices)
-5. Use [Git best practices](Rdm_git.md#best-practices)
-6. Submit a pull request
-
-## Future Development
-
-- Enhanced template system
-- IDE integration
-- Custom LLM backends
-- Extended function library
+See [Git Integration Guide](Rdm_git.md#contributing)
 
 ---
-
-For more information, see:
-- [Implementation Details](Rdm_implementation.md)
-- [System Configuration](README.md)
-- [Examples](examples/)
+📝 See [Documentation Standards](Rdm_standards.md) for detailed guidelines

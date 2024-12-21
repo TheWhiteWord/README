@@ -1,164 +1,115 @@
 # READMEs Programming System
 
-An innovative programming system using README.md files as both documentation and executable code, optimized for LLM interaction.
+A self-contained programming system using README.md as executable documentation, optimized for LLM and Git automation.
 
-## Quick Links
-- [Documentation](doc/Rdm_documentation.md)
-- [Git Integration](doc/Rdm_git.md)
-- [External Libraries](doc/Rdm_external_libraries.md)
+## Quick Navigation
+📘 Documentation:
+- [Full Documentation](doc/Rdm_documentation.md#system-overview)
+- [Standards Guide](doc/Rdm_standards.md#llm-processing-protocol)
+- [Integration Guide](doc/Rdm_git.md#core-features)
 
 ## System Configuration
-
 ```yaml
 version: 1.0
-context: enabled
+metadata:
+  standalone: true
+  web_compatible: true
+  git_ready: true
+  
+context:
+  enabled: true
+  warmhole_links: true
+  state_tracking: true
+  
 variables:
   readme_content: ""
   previous_output: ""
   system_state: ""
-  topic: ""
-  llm_context: enabled
-  git_integration: enabled
+  
+llm_protocol:
+  context_depth: 3
+  attention_focus: ["config", "execution", "state"]
+  navigation:
+    quick_links: enabled
+    state_preservation: true
+    cross_references: enabled
+  
 parser:
   heading_section: ^##\s+(.+)$
   heading_function: ^#\s+(.+)$
   list_item: ^(\s+)-\s+(.+)$
   key_value: ^(\s+)-\s+(\w+):\s*(.+)$
-  nested_list: ^(\s+)-\s+(\w+):$
-  indentation: 2
-llm_settings:
-  context_depth: 3
-  branch_awareness: true
-  cross_reference: enabled
 ```
 
-## Parser Implementation
+## Core Functions
 
-```javascript
-const parseLibrary = md => md.match(/^#\s+(.+)$/gm)
-const parseTemplate = md => md.match(/^###\s+(.+)$/gm)
-const parseContext = md => JSON.parse(md.match(/\{[\s\S]+\}/m)[0])
-```
-
-## Function Library
-
-```md
-## CORE
-
-# system_init
-  - description: Bootstrap system from README with LLM context
-  - parameters:
-    - content: string
-    - llm_context: object
-  - returns:
-    - system_state: ready
-    - functions: loaded
-    - templates: parsed
-    - llm_context: initialized
-
-# system_execute
-  - description: Run template with context
-  - parameters:
-    - template: string
-    - input: string
-    - context: object
-
-# system_compose_program
-  - description: Generates a composed program by combining README.md with custom libraries
-  - parameters:
-    - readme_file: string
-    - libraries: [string]
-  - returns:
-    - composed_readme: string
-    - execution_state: ready
-
-## LLM Integration
-
-# llm_context_switch
-  - description: Switch LLM context based on Git branch or documentation section
-  - parameters:
-    - context_type: "git"|"doc"
-    - context_id: string
-  - returns:
-    - new_context: object
-
-# llm_reference_resolver
-  - description: Resolve cross-references in documentation for LLM
-  - parameters:
-    - reference: string
-    - context: object
-  - returns:
-    - resolved_content: string
-
-## CUSTOM
-```
-
-# Program Templates
-
-```md
-### Bootstrap
+### System Bootstrap
+```markdown
 # Execute
-  - function: system_init
-  - input: "{{readme_content}}"
-  - outputs:
-    - system_state
-    - functions
-    - templates
+- function: system_init
+- input: "{{readme_content}}"
+- context:
+  - git_aware: true
+  - llm_ready: true
+```
 
-### Program Composing
+### Program Execution
+```markdown
 # Execute
-  - function: system_compose_program
-  - libraries:
-    - my_first_library.md
-  - readme_content: "{{readme_content}}"
-
+- function: system_execute
+- template: "{{selected_template}}"
+- input: "{{user_input}}"
+- state: "{{system_state}}"
 ```
 
-## Execution Context
-
-```json
-{
-  "previous_output": "",
-  "variables": {},
-  "state": "ready",
-  "llm_context": {
-    "current_branch": "main",
-    "doc_section": "root",
-    "reference_depth": 0
-  }
-}
+### State Management
+```markdown
+# State Tracking
+- preserve: current_context
+- store: git_enabled
+- track: ["output", "context", "state"]
 ```
 
-## Program Execution
+## Quick Start
 
-### Bootstrap
-
-```md
-# Execute
-  - function: system_init
-  - input: "{{readme_content}}"
-  - outputs:
-    - system_state
-    - functions
-    - templates
+### 1. Initialize System
+```sh
+git clone https://github.com/yourusername/readmes
+cd readmes
+# System auto-initializes on first LLM interaction
 ```
 
-## Program Composition
-
-```md
-# Execute
-  - function: system_compose_program
-  - libraries:
-    - my_first_library.md
-  - readme_content: "{{readme_content}}"
+### 2. Execute Program
+```markdown
+# Run Program
+- template: quick_start
+- input: "Hello READMEs!"
+- track_state: true
 ```
 
-## LLM Interaction Guide
+## Integration Points
 
-For optimal LLM interaction, use:
-- Internal links: [Function Library](#function-library)
-- Git branches for context switching
-- Cross-references between documentation files
-- Structured metadata in YAML format
+### LLM Processing
+- See [LLM Protocol](doc/Rdm_standards.md#llm-processing-protocol)
+- Context preservation enabled
+- Warmhole navigation supported
 
-See [Documentation](doc/Rdm_documentation.md) for detailed usage.
+### Git Automation
+- See [Git Integration](doc/Rdm_git.md#workflow-guide)
+- State tracking
+- Branch awareness
+
+### Documentation Standards
+- See [Standards Guide](doc/Rdm_standards.md#document-structure)
+- Cross-referencing
+- State management
+
+## Reference Links
+- [Implementation Details](doc/Rdm_documentation.md#core-components)
+- [Testing Guide](doc/Rdm_testing.md#testing-methods)
+- [Library Integration](doc/Rdm_external_libraries.md#library-system)
+
+---
+📝 This README serves as both documentation and executable program
+🔄 State changes are tracked via Git
+🤖 Optimized for LLM processing

@@ -1,100 +1,121 @@
 # Testing READMEs Programming System
 
-This document provides guidelines on how to effectively test the READMEs Programming System components and functionality.
+This document outlines testing procedures for the READMEs Programming System.
 
-📚 [Back to Main Documentation](Rdm_documentation.md)
+## Quick Links
+📘 Related Docs:
+- [Main Documentation](Rdm_documentation.md)
+- [Git Integration](Rdm_git.md#continuous-integration-and-deployment)
+- [Implementation Details](Rdm_implementation.md#testing)
 
 ## Table of Contents
-- [Overview](#overview)
-- [Core Components](#core-components)
-- [Testing Methodology](#testing-methodology)
-- [Test Cases](#test-cases)
-- [Best Practices](#best-practices)
+- [Testing Overview](#testing-overview)
+- [Test Configuration](#test-configuration)
+- [Testing Methods](#testing-methods)
+- [Automated Testing](#automated-testing)
+- [Test Examples](#test-examples)
 
-## Overview
+## Testing Overview
 
-Testing in the READMEs Programming System focuses on verifying the correct functioning of system components through README.md file execution and state management.
+### Scope
+- Component testing
+- Integration testing
+- State management validation
+- Template verification
 
-## Core Components
+### Prerequisites
+- Basic understanding of [system architecture](Rdm_documentation.md#system-architecture)
+- [Git workflow](Rdm_git.md) setup
+- Test environment configuration
 
-### Required Sections
-1. **System Configuration**: YAML metadata (version, context, variables)
-2. **Parser Implementation**: JavaScript code for README.md parsing
-3. **Function Library**: Core system functions
-4. **Program Templates**: Reusable task templates
-5. **Execution Context**: Default structure definition
+## Test Configuration
 
-## Testing Methodology
-
-### 1. System Initialization
-Test the `system_init` function by sending a complete README.md file to verify proper parsing and context setup.
-
-```sh
-# Test system_init
-<Send complete README.md in new conversation>
-<Verify returned Markdown and system ready confirmation>
+### Required Components
+```yaml
+version: 1.0
+test_context:
+  enabled: true
+  state_tracking: true
+  git_integration: true
 ```
 
-### 2. Template Execution
-Test templates using `system_execute` with different inputs and contexts:
+### Test Environment Setup
+1. Clone repository using [Git integration](Rdm_git.md#version-control)
+2. Initialize test context
+3. Configure test templates
 
+## Testing Methods
+
+### 1. Component Testing
 ```markdown
-# Execute
+# Test Component
 - function: system_execute
-- template: text_analysis
-- input: "Test content"
-- context: "{{system_state}}"
+- component: parser
+- input: "test_content"
+- validate: ["syntax", "output", "state"]
 ```
 
-### 3. Pipeline Testing
-Verify complex operations using the pipeline template:
-
+### 2. Integration Testing
 ```markdown
-# Execute
-- function: system_execute
-- template: text_analysis_pipeline
-- topic: "Pipeline test"
+# Test Pipeline
+- template: analysis_pipeline
+- steps:
+  - parse_input
+  - process_content
+  - validate_output
 ```
 
-## Test Cases
+### 3. State Validation
+Verify system state management:
+```markdown
+# Validate State
+- check: "{{system_state}}"
+- expect: 
+  context: active
+  history: preserved
+```
 
-### Basic Function Tests
-1. **Text Generation**: Test basic text creation
-2. **Text Analysis**: Verify analysis functions
-3. **State Management**: Check context variables
-4. **Template Processing**: Validate template execution
+## Automated Testing
 
-### Integration Tests
-1. **Pipeline Operations**: Test multi-step processes
-2. **Context Preservation**: Verify state between calls
-3. **Error Handling**: Test system responses to invalid inputs
+### Git Integration
+- Uses [CI/CD workflow](Rdm_git.md#continuous-integration-and-deployment)
+- Automated test runs on commits
+- Test result tracking
+
+### Test Runners
+```markdown
+# Execute Tests
+- suite: unit_tests
+- coverage: true
+- report: markdown
+```
 
 ## Best Practices
 
-1. **Isolation**: Test one component at a time
-2. **Clean State**: Start with fresh context for each test
-3. **Documentation**: Document test cases and expected results
-4. **Verification**: Confirm outputs match expectations
-5. **Error Cases**: Include tests for failure scenarios
+1. **Isolation**: Test components independently
+2. **Git Integration**: Follow [Git best practices](Rdm_git.md#best-practices)
+3. **Documentation**: Update test cases with code changes
+4. **State Management**: Clear state between tests
+5. **Error Handling**: Test failure scenarios
 
-## Example Test Workflow
+## Example Workflow
 
-1. **Initialize System**:
-   ```markdown
-   # Send base README.md
-   <verify system initialization>
-   ```
+### Basic Test Case
+```markdown
+# Test Function
+- name: "text_generation"
+- input: "test input"
+- expect: "formatted output"
+```
 
-2. **Execute Template**:
-   ```markdown
-   # Test template
-   - template: text_analysis
-   - input: "Test content"
-   ```
+### Pipeline Test
+```markdown
+# Test Pipeline
+- template: "analysis"
+- input: "sample text"
+- stages: ["parse", "analyze", "format"]
+```
 
-3. **Verify Results**:
-   - Check output format
-   - Validate context updates
-   - Confirm state preservation
-
-By following these guidelines, you can ensure reliable testing of the READMEs Programming System components and functionality.
+---
+📝 See [Implementation Guide](Rdm_implementation.md) for technical details
+🔄 Follow [Git Guide](Rdm_git.md) for version control integration
