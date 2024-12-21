@@ -1,121 +1,120 @@
 # Testing READMEs Programming System
 
-This document outlines testing procedures for the READMEs Programming System.
+!!! Context Notice
+Testing framework documentation and standards for the READMEs Programming System.
 
 ## Quick Links
-📘 Related Docs:
-- [Main Documentation](Rdm_documentation.md)
-- [Git Integration](Rdm_git.md#continuous-integration-and-deployment)
-- [Implementation Details](Rdm_implementation.md#testing)
+📘 System Navigation:
+- [Documentation Hub](Rdm_documentation.md#system-overview)
+- [Standards Guide](Rdm_standards.md#llm-processing-protocol)
+- [Implementation Details](Rdm_implementation.md#testing-implementation)
+- [Git Integration](Rdm_git.md#cicd-integration)
 
 ## Table of Contents
-- [Testing Overview](#testing-overview)
-- [Test Configuration](#test-configuration)
-- [Testing Methods](#testing-methods)
-- [Automated Testing](#automated-testing)
-- [Test Examples](#test-examples)
+- [Core Testing](#core-testing)
+- [Test Framework](#test-framework)
+- [CI/CD Setup](#cicd-setup)
+- [Examples](#examples)
 
-## Testing Overview
+## Core Testing
 
-### Scope
-- Component testing
-- Integration testing
-- State management validation
-- Template verification
-
-### Prerequisites
-- Basic understanding of [system architecture](Rdm_documentation.md#system-architecture)
-- [Git workflow](Rdm_git.md) setup
-- Test environment configuration
-
-## Test Configuration
-
-### Required Components
+### System Configuration
 ```yaml
-version: 1.0
-test_context:
-  enabled: true
-  state_tracking: true
-  git_integration: true
+test_protocol:
+  context_depth: 3
+  state_tracking: enabled
+  warmhole_links: true
 ```
 
-### Test Environment Setup
-1. Clone repository using [Git integration](Rdm_git.md#version-control)
-2. Initialize test context
-3. Configure test templates
-
-## Testing Methods
-
-### 1. Component Testing
+### Component Tests
 ```markdown
 # Test Component
 - function: system_execute
 - component: parser
-- input: "test_content"
 - validate: ["syntax", "output", "state"]
+- error_handling:
+  - invalid_syntax: "Return parse error"
+  - empty_input: "Return validation error"
 ```
 
-### 2. Integration Testing
-```markdown
-# Test Pipeline
-- template: analysis_pipeline
-- steps:
-  - parse_input
-  - process_content
-  - validate_output
+## Test Framework
+
+### Automated Testing
+```yaml
+ci_pipeline:
+  trigger: ["push", "pull_request"]
+  steps:
+    - validate_docs
+    - run_tests
+    - check_coverage
 ```
 
-### 3. State Validation
-Verify system state management:
+### Coverage Standards
 ```markdown
-# Validate State
-- check: "{{system_state}}"
+# Coverage Rules
+- documentation: 90%
+- functions: 85%
+- integration: 80%
+- reporting: markdown
+```
+
+## CI/CD Setup
+
+### Pipeline Configuration
+```yaml
+name: READMEs Testing
+on: [push, pull_request]
+jobs:
+  test:
+    steps:
+      - test_docs
+      - test_integration
+      - report_coverage
+```
+
+### Error Management
+```markdown
+# Error Protocol
+- track_errors: true
+- state_recovery: enabled
+- notification: critical_only
+```
+
+## Examples
+
+### Basic Test
+```markdown
+# Test: Content Generation
+- name: "generate_text"
+- description: "Validates text generation"
+- input: "Test input"
 - expect: 
-  context: active
-  history: preserved
+  format: "markdown"
+  length: "100 words"
+- error_handling:
+  invalid_input: "Log and abort"
 ```
 
-## Automated Testing
-
-### Git Integration
-- Uses [CI/CD workflow](Rdm_git.md#continuous-integration-and-deployment)
-- Automated test runs on commits
-- Test result tracking
-
-### Test Runners
+### Integration Test
 ```markdown
-# Execute Tests
-- suite: unit_tests
-- coverage: true
-- report: markdown
+# Test: Pipeline
+- name: "analysis_flow"
+- stages:
+  - validate_input
+  - process_content
+  - verify_output
+- error_recovery:
+  stage_failure: "rollback"
 ```
 
-## Best Practices
-
-1. **Isolation**: Test components independently
-2. **Git Integration**: Follow [Git best practices](Rdm_git.md#best-practices)
-3. **Documentation**: Update test cases with code changes
-4. **State Management**: Clear state between tests
-5. **Error Handling**: Test failure scenarios
-
-## Example Workflow
-
-### Basic Test Case
+## State Tracking
 ```markdown
-# Test Function
-- name: "text_generation"
-- input: "test input"
-- expect: "formatted output"
-```
-
-### Pipeline Test
-```markdown
-# Test Pipeline
-- template: "analysis"
-- input: "sample text"
-- stages: ["parse", "analyze", "format"]
+# Test State
+- context: preserved
+- history: tracked
+- warmhole_links: enabled
 ```
 
 ---
-📝 See [Implementation Guide](Rdm_implementation.md) for technical details
-🔄 Follow [Git Guide](Rdm_git.md) for version control integration
+📝 See [Standards Guide](Rdm_standards.md#document-structure) for documentation rules
+🔄 Follow [Implementation Guide](Rdm_implementation.md#testing-implementation) for technical details

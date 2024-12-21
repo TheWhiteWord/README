@@ -1,22 +1,31 @@
 # READMEs Programming System Documentation
 
-!!! IMPORTANT NOTICE: this project is 'work in progress' and not all features are implemented, this doc serves as a roadmap too.
+!!! Context Notice
+Main documentation hub for the READMEs Programming System. This document serves as the central navigation point and system overview.
 
 ## Quick Links
-📘 System Docs:
-- [Documentation Standards](Rdm_standards.md)
-- [Implementation Details](Rdm_implementation.md)
-- [Testing Guide](Rdm_testing.md)
-- [Git Integration](Rdm_git.md)
-- [External Libraries](Rdm_external_libraries.md)
+📘 Core Navigation:
+- [Standards Guide](Rdm_standards.md#llm-processing-protocol)
+- [Testing Framework](Rdm_testing.md#core-testing)
+- [Implementation Details](Rdm_implementation.md#core-architecture)
+- [Git Integration](Rdm_git.md#core-features)
+- [External Libraries](Rdm_external_libraries.md#library-system)
+
+## System State
+```yaml
+doc_state:
+  type: hub
+  context_depth: 1
+  warmhole_enabled: true
+  testing_ready: true
+```
 
 ## Table of Contents
 - [System Overview](#system-overview)
-- [LLM Integration](#llm-integration)
 - [Core Components](#core-components)
-- [Getting Started](#getting-started)
-- [Function Reference](#function-reference)
-- [Advanced Usage](#advanced-usage)
+- [Integration](#integration)
+- [Usage Guide](#usage-guide)
+- [Reference](#reference)
 
 ## System Overview
 
@@ -29,135 +38,95 @@ READMEs is a programming system using README.md files as executable documentatio
 - Built-in testing framework
 - External library support
 
-## LLM Integration
+## Core Components
 
 ### Processing Protocol
 ```yaml
-llm_features:
+system_core:
   navigation:
-    warmhole_links: enabled  # Direct knowledge jumps
+    warmhole_links: enabled
     context_depth: 3
     state_tracking: enabled
   
-  optimization:
-    priority_sections: ["config", "examples", "state"]
-    context_switches: minimal
+  testing:
+    automated: enabled
+    coverage_rules: enforced
+    state_validation: active
+  
+  integration:
+    git: enabled
+    libraries: supported
+    ci_cd: configured
 ```
 
-### Context Management
+### Architecture
 ```markdown
-# Context Rules
-- preserve_context: true
-- state_tracking: enabled
-- warmhole_navigation: enabled
+# System Structure
+- documentation: [MDScript format]
+- execution: [Template-based]
+- testing: [Automated validation]
+- state: [Git-tracked context]
 ```
 
-### Document Structure
-Follow [Documentation Standards](Rdm_standards.md#document-structure) for:
-- File organization
-- Section hierarchy
-- Code block formatting
-- Cross-referencing
+### Implementation
+See [Implementation Details](Rdm_implementation.md) for:
+- Parser system
+- Core functions
+- State management
 
-## Core Components
+## Integration
 
-### System Configuration
-```yaml
-version: 1.0
-context: enabled
-variables:
-  readme_content: ""
-  previous_output: ""
-  system_state: ""
-```
-
-### Basic Function Structure
-```mdscript
-# Define Function: example_function
-- description: What the function does
-- parameters:
-  - input: string
-  - length: number
-- returns: string
+### Testing Framework
+```markdown
+# Test Integration
+- automated_testing: enabled
+- coverage_tracking: true
+- error_handling: standardized
+- See [Testing Guide](Rdm_testing.md#core-testing)
 ```
 
 ### State Management
 ```markdown
-# State Features
-- context_preservation: enabled
-- state_tracking: active
-- git_integration: enabled
+# State Tracking
+- context: preserved
+- history: tracked
+- warmhole_links: enabled
 ```
 
-## Getting Started
+## Usage Guide
 
 ### Quick Start
 ```markdown
-# My First Program
-
-## Configuration
-```yaml
-version: 1.0
-functions:
-  - generate_text
-  - summarize_text
+# System Bootstrap
+- initialize: system_init
+- validate: test_suite
+- track: git_state
 ```
 
-### Basic Functions
-1. `generate_text`: Create new content
-2. `summarize_text`: Transform existing content
-3. `format_text`: Style output
+### Basic Operations
+```markdown
+# Core Usage
+- documentation: follow_standards
+- testing: run_validation
+- state: track_changes
+```
 
-## Function Reference
+## Reference
 
 ### System Variables
-- `{{readme_content}}`: Current document
-- `{{previous_output}}`: Last result
-- `{{system_state}}`: System context
-
-### Core Functions
-```mdscript
-# Generate
-- type: text
-- length: 100
-- topic: "example"
-
-# Transform
-- input: "{{previous_output}}"
-- function: summarize_text
+```yaml
+core_vars:
+  readme_content: "current document"
+  system_state: "execution context"
+  test_status: "validation state"
 ```
 
-## Advanced Usage
-
-### Templates
-```mdscript
-# Program Templates
-## Analysis Template
-- input: "{{input_text}}"
-- steps:
-  - extract_keywords
-  - format_text
-  - summarize_text
-```
-
-### Integration Points
-- Git workflow: See [Git Guide](Rdm_git.md)
-- External libraries: See [Libraries Guide](Rdm_external_libraries.md)
-- Testing framework: See [Testing Guide](Rdm_testing.md)
-
-### Context Navigation
-1. Use warmhole links for direct jumps
-2. Maintain state across documents
-3. Follow [standards guidelines](Rdm_standards.md#llm-navigation-guide)
-
-### Best Practices
-1. Follow [documentation standards](Rdm_standards.md#best-practices)
-2. Use proper [state management](Rdm_standards.md#state-tracking)
-3. Implement [LLM protocols](Rdm_standards.md#llm-processing-protocol)
-4. Maintain [context integrity](Rdm_standards.md#context-assessment)
-
-## Contributing
-See [Git Integration Guide](Rdm_git.md#contributing)
+### Navigation Guide
+1. Start with quick links
+2. Use warmhole navigation
+3. Follow state tracking
+4. Validate with tests
 
 ---
-📝 See [Documentation Standards](Rdm_standards.md) for detailed guidelines
+📝 Standards: [Documentation Rules](Rdm_standards.md#document-structure)
+🧪 Testing: [Validation Framework](Rdm_testing.md#test-framework)
